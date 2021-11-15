@@ -1,0 +1,16 @@
+image: node:14.17.6-buster
+
+cache:
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  script:
+    - yarn
+    - npm run build
+    - mv dist/ client-app/
+  artifacts:
+    paths:
+      - client-app
+    expire_in: 1 week
